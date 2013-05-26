@@ -8,10 +8,10 @@ use_xft yes
 xftfont DroidSans:size=8.75
 xftalpha 0.1
 
-#########
+####
 ## Force UTF8? Requires XFT (see above)
 ## Displays degree symbol, instead of Â°, etc.
-########
+#
 override_utf8_locale yes
 
 ####
@@ -207,8 +207,8 @@ ${voffset 2}${offset -2}${font OpenLogos:size=12}${color2}Z${voffset -4}${font D
 ${voffset 2}${font StyleBats:size=10}${color2}d${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}nVidia GeForce GT 630M 2GB${font}
 ${voffset 2}${font StyleBats:size=10}${color2}A${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Intel${offset 3}Core i7 - 2670 QM${alignr 1}${font DroidSans:size=8.3}${freq_g cpu0}${offset 1}GHz${font}
 ${voffset 2}${font StyleBats:size=10}${color2}q${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}System${offset 3}Uptime${alignr}${font DroidSans:size=8.4}${uptime_short}${font}
-Battery: $alignr${battery_percent BAT0}%
-Battery Time: $alignr${battery_time BAT0}
+${voffset 2}${font StyleBats:size=10}${color2}q${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Battery: $alignr${battery_percent BAT0}%${font}
+${voffset 2}${font StyleBats:size=10}${color2}q${voffset -1}${font DroidSans:size=8.65}${color3}${offset 5}Battery Time: $alignr${battery_time BAT0}${font}
 ##################################
 ##          PROCESSORS          ##
 ##################################
@@ -235,8 +235,8 @@ ${voffset 15}${font StyleBats:size=9.9}${color2}x${voffset -2}${font DroidSansFa
 ${voffset 17}${font StyleBats:size=9.9}${color2}4${voffset -2}${font DroidSansFallback:size=8.3}${color3}${offset 4}SWAP${goto 95}${font DroidSans:size=8.3}${swap}${goto 133}/${offset 5}${swapmax}${alignr}${swapperc}%${font}
 
 ${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}HDD Temp${offset 8}${color8}${voffset -2}${hr 2}${font}
-${color lightgrey}${execi 5 hddtemp /dev/sda}
-${color lightgrey}${execi 5 hddtemp /dev/sdb}
+${voffset 5}${font StyleBats:size=9.9}${color2}x${voffset -2}${font DroidSansFallback:size=8.3}${color3}${offset 4}${color lightgrey}${execi 5 hddtemp /dev/sda}
+${voffset 5}${font StyleBats:size=9.9}${color2}x${voffset -2}${font DroidSansFallback:size=8.3}${color3}${offset 4}${color lightgrey}${execi 5 hddtemp /dev/sdb}
 ##################################
 ##         TOP PROCESSES        ##
 ##################################
