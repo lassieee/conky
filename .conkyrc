@@ -11,7 +11,7 @@ xftalpha 0.1
 #########
 ## Force UTF8? Requires XFT (see above)
 ## Displays degree symbol, instead of Â°, etc.
-#
+########
 override_utf8_locale yes
 
 ####
