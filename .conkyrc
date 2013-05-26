@@ -1,48 +1,6 @@
-##################################
-## VinDSL | rev. 11-09-04 17:05 ##
-##################################
-##    September 2011 Series     ##
-##################################
-
-## ¡PLEASE READ THE FINE PRINT! ##
-
-####
-## Development Platforms (current)
-#
-#  Ubuntu 10.10 'Maverick Meerkat' (GNOME 2.28  - Conky 1.8.0-1)
-#  Ubuntu 11.10 'Oneiric Ocelot'   (UNITY 2D/3D - Conky 1.8.1-2)
-#  Screen Resolution: 1280x1024x24 (DELL UltraSharp 1907FP)
-
-####
-## Prerequisites (required)
-#
-#  conky-all 1.8.0 or 1.8.1
-#  conkyForecast 2.16 or newer 
-#  Weather.com XML Data Feed (XOAP)
-#  UTF-8 Compatible Text Editor
-
-####
-## Installed fonts (required)
-#
-#  ConkyWeather  (Stanko Metodiev - included in Conky distro)
-#  ConkyWindNESW (Stanko Metodiev - included in Conky distro)
-#  Cut Outs for 3D FX (Fonts & Things)
-#  Droid Font Family (Google Android SDK)
-#  KR A Round (Kat's Fun Fonts)
-#  Moon Phases (Curtis Clark)
-#  OpenLogos (Icoma)
-#  PizzaDude Bullets (Jakob Fischer)
-#  Radio Space (Iconian Fonts)
-#  StyleBats (Vinterstille)
-#  Ubuntu Font Family (Canonical Ltd)
-#  Ubuntu Title Bold (Paulo Silva - not included in link below)
-#  Weather (Jonathan Macagba)
-# 
-## Tips n' Tricks from Mr. Peachy, djyoung4, and 42dorian (Thanks!)
 ## Most necessary fonts can be downloaded here: http://ompldr.org/vOHdoag
 ## Unzip the fonts into your font folder, for example: /home/username/.fonts
 ## Run this command in a terminal (rebuilds font cache file): sudo fc-cache -fv
-
 ####
 ## Use XFT? Required to Force UTF8 (see below)
 #
