@@ -273,7 +273,7 @@ ${color #0077ff}Total Down:${color lightgrey} ${totaldown wlan0}           $alig
 ##          DISK ACTIVITY       ##
 ##################################
 ${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}Disk Activity sdb${offset 8}${color8}${voffset -2}${hr 2}${font}
-${voffset 20}${color lightgrey}Read${goto 40}${voffset -16}${diskiograph_read /dev/sdb 25,150 000000 0077ff 180}${alignr 5}${voffset 16}${color lightgrey}${diskio_read /dev/sda}${color}
-${color lightgrey}Write${goto 40}${voffset -16}${diskiograph_write /dev/sdb 25,150 000000 0077ff 180}${alignr 5}${voffset 14}${color lightgrey}${diskio_write /dev/sda}${color}${font Monofur:size=6}
+${voffset 20}${color lightgrey}Read${goto 40}${voffset -16}${alignr}${diskiograph_read /dev/sdb 25,150 000000 0077ff 180}   ${voffset 16}${color lightgrey}${diskio_read /dev/sdb}${color}
+${color lightgrey}Write${goto 40}${voffset -16}${alignr}${diskiograph_write /dev/sdb 25,150 000000 0077ff 180}   ${voffset 16}${color lightgrey}${diskio_write /dev/sdb}${color}${font Monofur:size=6}
 
 
