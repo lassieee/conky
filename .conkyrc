@@ -190,13 +190,13 @@ TEXT
 ##             LOGO             ##
 ##################################
 ## Uncomment for hard-coded ID (static)
-${voffset -25}${font OpenLogos:size=95}${color2}v${font}${voffset -74}${goto 163}${font UbuntuTitleBold:size=19.8}${color #0077ff}1${offset 3}3${offset 1}.${offset 1}0${offset 1}4${font}
+#${voffset -25}${font OpenLogos:size=95}${color2}v${font}${voffset -74}${goto 163}${font UbuntuTitleBold:size=19.8}${color #0077ff}1${offset 3}3${offset 1}.${offset 1}0${offset 1}4${font}
 ####
 ## Uncomment for soft-coded ID (dynamic)
-#${voffset -33}${font OpenLogos:size=103}${color2}v${font}${voffset -78}${goto 179}${font UbuntuTitleBold:size=19.8}${color #0077ff}${pre_exec cat /etc/*release | grep 'RELEASE' | awk -F'=' '{print $2}'}${font}
+${voffset -33}${font OpenLogos:size=103}${color2}v${font}${voffset -78}${goto 179}${font UbuntuTitleBold:size=19.8}${color #0077ff}${pre_exec cat /etc/*release | grep 'RELEASE' | awk -F'=' '{print $2}'}${font}
 ####
 ## Additional ID (branch version, code name, release date, etc.)
-${voffset -3}${goto 170}${font Ubuntu-B:size=7}${color #0077ff}precise pangolin${font}
+${voffset -3}${goto 175}${font Ubuntu-B:size=7}${color #0077ff}precise pangolin${font}
 ##################################
 ##            SYSTEM            ##
 ##################################
@@ -252,9 +252,7 @@ ${voffset 4}${font StyleBats:size=10}${color1}h${voffset -3}${font DroidSans:siz
 ##             TIME             ##
 ##################################
 ${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}TIME${offset 8}${color8}${voffset -2}${hr 2}${font}
-
 ${voffset -4}${font RadioSpace:size=32}${color3}${if_match ${time %l}<=9}${alignc 7}${time %l:%M%p}${else}${if_match ${time %l}>=10}${alignc -1}${time %l:%M%p}${endif}${endif}${font}
-
 ##################################
 ##             NETWORK          ##
 ##################################
@@ -268,11 +266,14 @@ ${color lightgrey}Bitrate: ${wireless_bitrate wlan0}
 ${color lightgrey}Gateway wlan:${color lightgrey}$alignr${gw_ip wlan0}
 ${color lightgrey}eth0:$alignr${addr eth0}
 ${color lightgrey}Gateway eth0:${color lightgrey}$alignr${gw_ip eth0}
-
-${color #0077ff}${downspeedgraph wlan0 27,120 000000 0077ff 180} $alignr${color #0077ff}${upspeedgraph wlan0 27,120 000000 0077ff 25}
+${color #0077ff}${downspeedgraph wlan0 25,120 000000 0077ff 180} $alignr${color #0077ff}${upspeedgraph wlan0 25,120 000000 0077ff 25}
 ${color #0077ff}Down:${color lightgrey} ${downspeed wlan0} k/s $alignr${color #0077ff} Up:${color lightgrey} ${upspeed wlan0} k/s
 ${color #0077ff}Total Down:${color lightgrey} ${totaldown wlan0}           $alignr${color #0077ff}Total Up:${color lightgrey} ${totalup wlan0}
-
-
+##################################
+##          DISK ACTIVITY       ##
+##################################
+${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}Disk Activity sdb${offset 8}${color8}${voffset -2}${hr 2}${font}
+${voffset 20}${color lightgrey}Read${goto 40}${voffset -16}${diskiograph_read /dev/sdb 25,150 000000 0077ff 180}${alignr 5}${voffset 16}${color lightgrey}${diskio_read /dev/sda}${color}
+${color lightgrey}Write${goto 40}${voffset -16}${diskiograph_write /dev/sdb 25,150 000000 0077ff 180}${alignr 5}${voffset 14}${color lightgrey}${diskio_write /dev/sda}${color}${font Monofur:size=6}
 
 
