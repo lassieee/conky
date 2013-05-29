@@ -234,13 +234,27 @@ ${voffset 5}${font StyleBats:size=9.9}${color2}x${voffset -2}${font DroidSansFal
 ${voffset 15}${font StyleBats:size=9.9}${color2}x${voffset -2}${font DroidSansFallback:size=8.3}${color3}${offset 4}HOME${goto 95}${font DroidSans:size=8.3}${fs_used /home}${goto 133}/${offset 5}${fs_size /home}${alignr}${fs_free_perc /home}%${font}
 ${voffset 17}${font StyleBats:size=9.9}${color2}4${voffset -2}${font DroidSansFallback:size=8.3}${color3}${offset 4}SWAP${goto 95}${font DroidSans:size=8.3}${swap}${goto 133}/${offset 5}${swapmax}${alignr}${swapperc}%${font}
 
+##################################
+##             HDD Temp         ##
+##################################
 ${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}HDD Temp${offset 8}${color8}${voffset -2}${hr 2}${font}
 ${voffset 5}${font StyleBats:size=9.9}${color2}x${voffset -2}${font DroidSansFallback:size=8.3}${color3}${offset 4}${color lightgrey}${execi 5 hddtemp /dev/sda}
 ${voffset 5}${font StyleBats:size=9.9}${color2}x${voffset -2}${font DroidSansFallback:size=8.3}${color3}${offset 4}${color lightgrey}${execi 5 hddtemp /dev/sdb}
 ##################################
+##             TIME             ##
+##################################
+${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}TIME${offset 8}${color8}${voffset -2}${hr 2}${font}
+${voffset -4}${font RadioSpace:size=32}${color3}${if_match ${time %l}<=9}${alignc 7}${time %l:%M%p}${else}${if_match ${time %l}>=10}${alignc -1}${time %l:%M%p}${endif}${endif}${font}
+##################################
+##          HDD ACTIVITY       ##
+##################################
+${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}HDD Activity sdb${offset 8}${color8}${voffset -2}${hr 2}${font}
+${voffset 10}${color lightgrey}Read${goto 40}${voffset -16}${alignr}${diskiograph_read /dev/sdb 25,150 000000 0077ff 180}   ${voffset 16}${color lightgrey}${diskio_read /dev/sdb}${color}
+${color lightgrey}Write${goto 40}${voffset -16}${alignr}${diskiograph_write /dev/sdb 25,150 000000 0077ff 180}   ${voffset 16}${color lightgrey}${diskio_write /dev/sdb}${color}${font Monofur:size=6}
+##################################
 ##         TOP PROCESSES        ##
 ##################################
-${voffset 16}${font DroidSans:bold:size=8}${color #0077ff}TOP 5 PROCESSES${offset 8}${color8}${voffset -2}${hr 2}${font}
+${font DroidSans:bold:size=8}${color #0077ff}TOP 5 PROCESSES${offset 8}${color8}${voffset -2}${hr 2}${font}
 ${color lightgrey}${alignc}(sorted by cpu usage)
 ${color #0077ff}${voffset -1}${font Droid Sans:style=Bold:size=8}Process${font}${voffset 0}${goto 126}CPU${alignr}RAM
 ${voffset 4}${font StyleBats:size=10}${color1}h${voffset -3}${font DroidSans:size=8.75}${color3}${offset 5}${top name 1}${font Droid Sans:size=8} ${goto 120}${top cpu 1}${alignr }${top mem 1}${font}
@@ -248,11 +262,6 @@ ${voffset 4}${font StyleBats:size=10}${color1}h${voffset -3}${font DroidSans:siz
 ${voffset 4}${font StyleBats:size=10}${color1}h${voffset -3}${font DroidSans:size=8.75}${color3}${offset 5}${top name 3}${font Droid Sans:size=8} ${goto 120}${top cpu 3}${alignr }${top mem 3}${font}
 ${voffset 4}${font StyleBats:size=10}${color1}h${voffset -3}${font DroidSans:size=8.75}${color3}${offset 5}${top name 4}${font Droid Sans:size=8} ${goto 120}${top cpu 4}${alignr }${top mem 4}${font}
 ${voffset 4}${font StyleBats:size=10}${color1}h${voffset -3}${font DroidSans:size=8.75}${color3}${offset 5}${top name 5}${font Droid Sans:size=8} ${goto 120}${top cpu 5}${alignr }${top mem 5}${font}
-##################################
-##             TIME             ##
-##################################
-${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}TIME${offset 8}${color8}${voffset -2}${hr 2}${font}
-${voffset -4}${font RadioSpace:size=32}${color3}${if_match ${time %l}<=9}${alignc 7}${time %l:%M%p}${else}${if_match ${time %l}>=10}${alignc -1}${time %l:%M%p}${endif}${endif}${font}
 ##################################
 ##             NETWORK          ##
 ##################################
@@ -269,11 +278,3 @@ ${color lightgrey}Gateway eth0:${color lightgrey}$alignr${gw_ip eth0}
 ${color #0077ff}${downspeedgraph wlan0 25,120 000000 0077ff 180} $alignr${color #0077ff}${upspeedgraph wlan0 25,120 000000 0077ff 25}
 ${color #0077ff}Down:${color lightgrey} ${downspeed wlan0} k/s $alignr${color #0077ff} Up:${color lightgrey} ${upspeed wlan0} k/s
 ${color #0077ff}Total Down:${color lightgrey} ${totaldown wlan0}           $alignr${color #0077ff}Total Up:${color lightgrey} ${totalup wlan0}
-##################################
-##          DISK ACTIVITY       ##
-##################################
-${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}Disk Activity sdb${offset 8}${color8}${voffset -2}${hr 2}${font}
-${voffset 20}${color lightgrey}Read${goto 40}${voffset -16}${alignr}${diskiograph_read /dev/sdb 25,150 000000 0077ff 180}   ${voffset 16}${color lightgrey}${diskio_read /dev/sdb}${color}
-${color lightgrey}Write${goto 40}${voffset -16}${alignr}${diskiograph_write /dev/sdb 25,150 000000 0077ff 180}   ${voffset 16}${color lightgrey}${diskio_write /dev/sdb}${color}${font Monofur:size=6}
-
-
