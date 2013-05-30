@@ -42,7 +42,7 @@ total_run_times 0
 ## Create own window instead of using desktop?
 #
 own_window yes
-own_window_type normal
+own_window_type override
 own_window_class Conky
 own_window_transparent no
 own_window_argb_visual yes
@@ -242,7 +242,6 @@ ${voffset 17}${font StyleBats:size=9.9}${color2}4${voffset -2}${font DroidSansFa
 ${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}HDD Temp${offset 8}${color8}${voffset -2}${hr 2}${font}
 ${voffset 5}${font StyleBats:size=9.9}${color2}x${voffset -2}${font DroidSansFallback:size=8.3}${color3}${offset 4}${color lightgrey}${execi 5 hddtemp /dev/sda}
 ${voffset 5}${font StyleBats:size=9.9}${color2}x${voffset -2}${font DroidSansFallback:size=8.3}${color3}${offset 4}${color lightgrey}${execi 5 hddtemp /dev/sdb}
-
 ##################################
 ##             TIME             ##
 ##################################
@@ -251,7 +250,7 @@ ${font RadioSpace:size=32}${color3}${alignc}${time %H:%M}
 ##################################
 ##          HDD ACTIVITY        ##
 ##################################
-${voffset -24}${font DroidSans:bold:size=8}${color #0077ff}HDD Activity${color8}${hr 2}${font}
+${voffset -28}${font DroidSans:bold:size=8}${color #0077ff}HDD Activity${color8}${hr 2}${font}
 ${color #0077ff}${diskiograph_read /dev/sda 25,120 000000 0077ff 180} ${alignr}${color #0077ff}${diskiograph_write /dev/sda 25,120 000000 0077ff 180}
 ${color #0077ff}sda read:${color lightgrey} ${diskio_read /dev/sda}${alignr}${color #0077ff} sda write:${color lightgrey} ${diskio_write /dev/sda}
 ${color #0077ff}${diskiograph_read /dev/sdb 25,120 000000 0077ff 180} ${alignr}${color #0077ff}${diskiograph_write /dev/sdb 25,120 000000 0077ff 180}
@@ -271,16 +270,19 @@ ${voffset 4}${font StyleBats:size=10}${color1}h${voffset -3}${font DroidSans:siz
 ##################################
 ##             NETWORK          ##
 ##################################
-${voffset 6}${font DroidSans:bold:size=8}${color #0077ff}NETWORK${offset 8}${color8}${voffset -2}${hr 2}${font}
+${font DroidSans:bold:size=8}${color #0077ff}NETWORK${color8}${hr 2}${font}
 ${color lightgrey}Hostname:${color lightgrey}$alignr$nodename
 ${color lightgrey}TCP Connections: ${alignr}${offset -8}${color lightgrey}${tcp_portmon 1 65535 count}
-${color lightgrey}Public IP: $alignr ${execi 3600 wget -qO - http://cfaj.freeshell.org/ipaddr.cgi}
-${color lightgrey}Wlan IP:${color lightgrey}$alignr${addr wlan0}
-${color lightgrey}Gateway wlan:${color lightgrey}$alignr${gw_ip wlan0}
+#${color lightgrey}Public IP: $alignr ${execi 3600 wget -qO - http://cfaj.freeshell.org/ipaddr.cgi}
+${if_existing /sys/class/net/eth0/operstate up}${color lightgrey}eth0 ip:${color lightgrey}$alignr${addr eth0}
+${color lightgrey}eth0 gw:${color lightgrey}$alignr${gw_ip eth0}
+${color #0077ff}${downspeedgraph eth0 25,120 000000 0077ff 180} $alignr${color #0077ff}${upspeedgraph eth0 25,120 000000 0077ff 25}
+${color #0077ff}Down:${color lightgrey} ${downspeed eth0}k/s${alignr}${color #0077ff} Up:${color lightgrey} ${upspeed eth0} k/s
+${color #0077ff}Total RX:${color lightgrey} ${totaldown eth0}${alignr}${color #0077ff}Total TX:${color lightgrey} ${totalup eth0}${endif}
+${if_existing /sys/class/net/wlan0/operstate up}${color lightgrey}wlan ip:${color lightgrey}$alignr${addr wlan0}
+${color lightgrey}wlan gw:${color lightgrey}$alignr${gw_ip wlan0}
 ${color lightgrey}Strength: ${wireless_link_qual_perc wlan0}% $alignr Essid: $alignr${wireless_essid wlan0}
 ${color lightgrey}Bitrate: ${wireless_bitrate wlan0}
-#${if_up eth0}${color lightgrey}eth0:$alignr${addr eth0}
-#${if_gw}${color lightgrey}Gateway eth0:${color lightgrey}$alignr${gw_ip eth0}
 ${color #0077ff}${downspeedgraph wlan0 25,120 000000 0077ff 180} $alignr${color #0077ff}${upspeedgraph wlan0 25,120 000000 0077ff 25}
 ${color #0077ff}Down:${color lightgrey} ${downspeed wlan0}k/s${alignr}${color #0077ff} Up:${color lightgrey} ${upspeed wlan0} k/s
-${color #0077ff}Total RX:${color lightgrey} ${totaldown wlan0}${alignr}${color #0077ff}Total TX:${color lightgrey} ${totalup wlan0}
+${color #0077ff}Total RX:${color lightgrey} ${totaldown wlan0}${alignr}${color #0077ff}Total TX:${color lightgrey} ${totalup wlan0}${endif}
