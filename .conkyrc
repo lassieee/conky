@@ -272,8 +272,8 @@ ${voffset 4}${font StyleBats:size=10}${color1}h${voffset -3}${font DroidSans:siz
 ##################################
 ${font DroidSans:bold:size=8}${color #0077ff}NETWORK${color8}${hr 2}${font}
 ${color lightgrey}Hostname:${color lightgrey}$alignr$nodename
+${color lightgrey}Public IP: $alignr ${execi 3600 wget -qO - http://cfaj.freeshell.org/ipaddr.cgi}
 ${color lightgrey}TCP Connections: ${alignr}${offset -8}${color lightgrey}${tcp_portmon 1 65535 count}
-#${color lightgrey}Public IP: $alignr ${execi 3600 wget -qO - http://cfaj.freeshell.org/ipaddr.cgi}
 ${if_existing /sys/class/net/eth0/operstate up}${color lightgrey}eth0 ip:${color lightgrey}$alignr${addr eth0}
 ${color lightgrey}eth0 gw:${color lightgrey}$alignr${gw_ip eth0}
 ${color #0077ff}${downspeedgraph eth0 25,120 000000 0077ff 180} $alignr${color #0077ff}${upspeedgraph eth0 25,120 000000 0077ff 25}
